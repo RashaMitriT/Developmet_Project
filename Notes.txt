@@ -1,0 +1,12 @@
+1-Develop the Project using  Asp.core MVC tools  
+
+2-Create Customer and Country models 
+
+3-Use EF to generate the required context and controllers and CRUD pages
+
+4-Use NuGet Package Manager to migrate to Database (Country Data saved in DB) 
+  
+5-Update index/Create action in customer and country Controller to generate dropdownlist 
+
+
+Note: still working on display the Country Name depend on ID on Customer Index  
