@@ -6,7 +6,6 @@
 
 4-Use NuGet Package Manager to migrate to Database (Country Data saved in DB) 
   
-5-Update index/Create action in customer and country Controller to generate dropdownlist 
+5-Update index/Create actions in customer and country Controller to generate dropdownlist 
 
 
-Note: still working on display the Country Name depend on ID on Customer Index  
