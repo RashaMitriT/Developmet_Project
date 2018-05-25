@@ -26,20 +26,34 @@ namespace DevelopmentCase.Controllers
        
         public async Task<IActionResult> Index()
         {
+
+            List<CustomerModelView> Customer_list = new List<CustomerModelView>();
+
+
             var customers = _context.Customer;
-            
-            foreach (Customer c in customers )
+
+            foreach (Customer c in customers)
             {
+                CustomerModelView cust = new CustomerModelView();
+
                 //Get the country name 
                 var country = await _context1.Country.SingleOrDefaultAsync(cty => cty.ID == c.Coutryid);
-                //assign country name to View Bag
-                ViewBag.selectedcountry = country.name;
+                //assign country to Model View 
+               
+                cust.fullname = c.fullname;
+                cust.ID = c.ID;
+
+                cust.country = country.name.ToString();
+                Customer_list.Add(cust);
+
 
             }
 
-            return View(await _context.Customer.ToListAsync());
+            return View(Customer_list);
         }
-        
+
+   
+
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using DevelopmentCase.ViewModels;
 
 namespace DevelopmentCase.Models
 {
@@ -14,5 +15,7 @@ namespace DevelopmentCase.Models
         }
 
         public DbSet<DevelopmentCase.Models.Customer> Customer { get; set; }
+
+        public DbSet<DevelopmentCase.ViewModels.CustomerModelView> CustomerModelView { get; set; }
     }
 }

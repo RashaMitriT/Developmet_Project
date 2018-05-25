@@ -16,6 +16,6 @@ namespace DevelopmentCase.ViewModels
         public string fullname { get; set; }
         [Required(ErrorMessage = "Select City")]
         [Display(Name = "Country Name")]
-        public Country country{ get; set; }
+        public string country{ get; set; }
     }
 }
