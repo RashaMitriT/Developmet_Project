@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using DevelopmentCase.Models;
 
-namespace DevelopmentCase.Models
+namespace DevelopmentCase.ViewModels
 {
     public class CustomerModelView
     {
@@ -15,6 +16,6 @@ namespace DevelopmentCase.Models
         public string fullname { get; set; }
         [Required(ErrorMessage = "Select City")]
         [Display(Name = "Country Name")]
-        public IEnumerable<SelectListItem> countries { get; set; }
+        public Country country{ get; set; }
     }
 }

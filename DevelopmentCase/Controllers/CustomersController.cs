@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DevelopmentCase.Models;
+using DevelopmentCase.ViewModels;
 
 namespace DevelopmentCase.Controllers
 {
@@ -21,18 +22,24 @@ namespace DevelopmentCase.Controllers
         }
 
         // GET: Customers
-  
+      
+       
         public async Task<IActionResult> Index()
         {
-          
+            var customers = _context.Customer;
+            
+            foreach (Customer c in customers )
+            {
+                //Get the country name 
+                var country = await _context1.Country.SingleOrDefaultAsync(cty => cty.ID == c.Coutryid);
+                //assign country name to View Bag
+                ViewBag.selectedcountry = country.name;
+
+            }
+
             return View(await _context.Customer.ToListAsync());
         }
-        public IActionResult getCountryFromDatabaseByCountryId(int id)
-        {
-
-            ViewBag.selectedcountry = _context1.Country.Where(c => c.ID == id).ToList();
-            return View(_context1.Country.Where(c => c.ID == id).ToList());
-        }
+        
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -48,7 +55,9 @@ namespace DevelopmentCase.Controllers
             {
                 return NotFound();
             }
-
+            var country = await _context1.Country
+               .SingleOrDefaultAsync(m => m.ID == customer.Coutryid);
+            ViewBag.selectedcountry = country.name;
             return View(customer);
         }
 
@@ -62,6 +71,8 @@ namespace DevelopmentCase.Controllers
 
             return View();
         }
+     
+
 
         // POST: Customers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
